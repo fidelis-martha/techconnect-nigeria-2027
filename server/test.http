@@ -1,0 +1,19 @@
+# POST http://localhost:5000/api/payment/initialize
+# Content-Type: application/json
+
+# {
+#     "email": "fidelismartha467@gmail.com",
+#     "ticket": "Premium"
+# }
+
+
+
+POST http://localhost:5000/api/payment/verify/T315618401417746
+Content-Type: application/json
+
+{
+    "name": "martha egiriga fidelis",
+    "email": "fidelismartha467@gmail.com",
+    "phone": "09138372313",
+    "ticket": "Premium"
+}
