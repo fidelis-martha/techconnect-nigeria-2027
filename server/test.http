@@ -1,19 +1,19 @@
-# POST http://localhost:5000/api/payment/initialize
+# POST https://techconnect-nigeria-2027.onrender.com/api/payment/initialize
 # Content-Type: application/json
 
 # {
-#     "email": "fidelismartha467@gmail.com",
+#     "email": "fidelismartha23@gmail.com",
 #     "ticket": "Premium"
 # }
 
 
 
-POST http://localhost:5000/api/payment/verify/T315618401417746
+POST https://techconnect-nigeria-2027.onrender.com/api/payment/verify/T500013077508929
 Content-Type: application/json
 
 {
-    "name": "martha egiriga fidelis",
-    "email": "fidelismartha467@gmail.com",
+    "name": "queen egiriga fidelis",
+    "email": "fidelismartha23@gmail.com",
     "phone": "09138372313",
     "ticket": "Premium"
 }

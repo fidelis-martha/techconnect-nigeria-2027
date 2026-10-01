@@ -463,7 +463,7 @@ if (existingPayment.rows.length > 0) {
         });
            console.log("Ticket has been sent to  email  successfully");
       } catch (error) {
-        console.log("Ticket email failed", emailError.message)
+        console.log("Ticket email failed", error.message)
       }
 
         res.status(200).json({
