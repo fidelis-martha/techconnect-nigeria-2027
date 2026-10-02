@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 async function sendTicketEmail({ name, email, ticket, amount, reference, ticketId }) {
 
-    const verificationUrl = `http://localhost:5000/api/tickets/${ticketId}`;
+    const verificationUrl = `${process.env.TICKET_BASE_URL}/api/tickets/${ticketId}`;
     const qrCodeDataUrl = await QRCode.toDataURL(verificationUrl);
 
     const { data, error } = await resend.emails.send({
