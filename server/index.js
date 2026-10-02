@@ -525,7 +525,72 @@ app.get("/api/tickets/:ticketId", async (req, res) => {
     }
 });
 
+// Check in / use a ticket
+app.patch("/api/tickets/:ticketId/use", async (req, res) => {
+    try {
+        const { ticketId } = req.params;
 
+        // Find the ticket
+        const result = await pool.query(
+            `SELECT id, name, email, ticket, amount,
+                    payment_status, ticket_id, ticket_used
+             FROM registrations
+             WHERE ticket_id = $1`,
+            [ticketId]
+        );
+
+        // Ticket does not exist
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Ticket not found"
+            });
+        }
+
+        const ticket = result.rows[0];
+
+        // Payment must be successful
+        if (ticket.payment_status !== "success") {
+            return res.status(400).json({
+                success: false,
+                message: "This ticket does not have a successful payment"
+            });
+        }
+
+        // Ticket has already been used
+        if (ticket.ticket_used === true) {
+            return res.status(409).json({
+                success: false,
+                message: "This ticket has already been used",
+                data: ticket
+            });
+        }
+
+        // Mark ticket as used
+        const updatedTicket = await pool.query(
+            `UPDATE registrations
+             SET ticket_used = TRUE
+             WHERE ticket_id = $1
+             RETURNING id, name, email, ticket, amount,
+                       payment_status, ticket_id, ticket_used`,
+            [ticketId]
+        );
+
+        res.status(200).json({
+            success: true,
+            message: "Ticket checked in successfully",
+            data: updatedTicket.rows[0]
+        });
+
+    } catch (error) {
+        console.log("Ticket check-in error:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Unable to check in ticket"
+        });
+    }
+});
 
 
 // start the server

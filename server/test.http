@@ -1,22 +1,4 @@
-# POST https://techconnect-nigeria-2027.onrender.com/api/payment/initialize
-# Content-Type: application/json
 
-# {
-#     "email": "fidelismartha23@gmail.com",
-#     "ticket": "Premium"
-# }
-
-
-
-# POST https://techconnect-nigeria-2027.onrender.com/api/payment/verify/T500013077508929
-# Content-Type: application/json
-
-# {
-#     "name": "queen egiriga fidelis",
-#     "email": "fidelismartha23@gmail.com",
-#     "phone": "09138372313",
-#     "ticket": "Premium"
-# }
 
 # GET https://techconnect-nigeria-2027.onrender.com/api/registrations
 
@@ -25,18 +7,20 @@
 # Content-Type: application/json
 
 # {
-#     "name": "queen egiriga fidelis",
-#     "email": "fidelismartha23@gmail.com",
+#    "name": "martha fidelis",
+#     "email": "marthafidelis892@gmail.com",
 #     "phone": "09138372313",
-#     "ticket": "Premium"
+#     "ticket": "Regular"
 # }
 
-POST https://techconnect-nigeria-2027.onrender.com/api/payment/verify/T689843012007450
-Content-Type: application/json
+# POST https://techconnect-nigeria-2027.onrender.com/api/payment/verify/T733677411374092
+# Content-Type: application/json
 
-{
-    "name": "queen egiriga fidelis",
-    "email": "fidelismartha23@gmail.com",
-    "phone": "09138372313",
-    "ticket": "Premium"
-}
+# {
+#     "name": "martha fidelis",
+#     "email": "marthafidelis892@gmail.com",
+#     "phone": "09138372313",
+#     "ticket": "Regular"
+# }
+
+PATCH http://localhost:5000/api/tickets/TC-F388F07D/use
